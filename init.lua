@@ -29,14 +29,12 @@ require("lazy").setup({
 			-- In case other textobject modules are enabled, we will load them
 			-- once nvim-treesitter is loaded
 			require("lazy.core.loader").disable_rtp_plugin("nvim-treesitter-textobjects")
-			load_textobjects = true
 		end,
 	},
 	{
 		"folke/flash.nvim",
 		event = "VeryLazy",
 		enabled = true,
-		---@type Flash.Config
 		opts = {
 			label = {
 				-- uppercase = false,
@@ -108,10 +106,6 @@ require("lazy").setup({
 	},
 	{
 		"echasnovski/mini.ai",
-		-- keys = {
-		--   { "a", mode = { "x", "o" } },
-		--   { "i", mode = { "x", "o" } },
-		-- },
 		event = "VeryLazy",
 		dependencies = { "nvim-treesitter-textobjects" },
 		opts = function()
