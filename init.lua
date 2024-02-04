@@ -220,6 +220,7 @@ vim.keymap.set("n", "<leader>;", "<cmd>lua require('vscode-neovim').call('vsnetr
 -- AI
 vim.keymap.set("n", "<leader>aa", "<cmd>lua require('vscode-neovim').call('workbench.action.openQuickChat.copilot')<CR>")
 vim.keymap.set("n", "<leader>aA", "<cmd>lua require('vscode-neovim').call('workbench.action.openChat.copilot')<CR>")
+vim.keymap.set("n", "<leader>aE", "<cmd>lua require('vscode-neovim').call('workbench.action.openChat.copilot')<CR>")
 vim.keymap.set("n", "<leader>ac", "<cmd>lua require('vscode-neovim').call('workbench.action.chat.open')<CR>")
 vim.keymap.set("n", "<leader>aC",
 	"<cmd>lua require('vscode-neovim').call('github.copilot.interactiveEditor.generateDocs')<CR>")
