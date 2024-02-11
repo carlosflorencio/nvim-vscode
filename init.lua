@@ -205,10 +205,10 @@ vim.o.relativenumber = true -- Relative line numbers
 ----------------- Keymaps
 
 -- Window Management
-vim.keymap.set({"n", "v"}, "<c-h>", "<cmd>lua require('vscode-neovim').call('workbench.action.navigateLeft')<cr>")
-vim.keymap.set({"n", "v"}, "<c-l>", "<cmd>lua require('vscode-neovim').call('workbench.action.navigateRight')<cr>")
-vim.keymap.set({"n", "v"}, "<c-j>", "<cmd>lua require('vscode-neovim').call('workbench.action.navigateDown')<cr>")
-vim.keymap.set({"n", "v"}, "<c-k>", "<cmd>lua require('vscode-neovim').call('workbench.action.navigateUp')<cr>")
+vim.keymap.set({ "n", "v" }, "<c-h>", "<cmd>lua require('vscode-neovim').call('workbench.action.navigateLeft')<cr>")
+vim.keymap.set({ "n", "v" }, "<c-l>", "<cmd>lua require('vscode-neovim').call('workbench.action.navigateRight')<cr>")
+vim.keymap.set({ "n", "v" }, "<c-j>", "<cmd>lua require('vscode-neovim').call('workbench.action.navigateDown')<cr>")
+vim.keymap.set({ "n", "v" }, "<c-k>", "<cmd>lua require('vscode-neovim').call('workbench.action.navigateUp')<cr>")
 vim.keymap.set("n", "<leader>cw", "<cmd>lua require('vscode-neovim').call('workbench.action.closeActiveEditor')<CR>")
 vim.keymap.set("n", "<leader>cs", "<cmd>lua require('vscode-neovim').call('workbench.action.closeEditorsAndGroup')<CR>")
 vim.keymap.set("n", "<leader>cW", "<cmd>lua require('vscode-neovim').call('workbench.action.closeWindow')<CR>")
