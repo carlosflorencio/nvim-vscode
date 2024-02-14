@@ -395,6 +395,11 @@ vim.keymap.set("n", "i", function()
 	end
 end, { expr = true })
 
+-- Better indenting
+vim.keymap.set("v", "<", "<gv")
+vim.keymap.set("v", ">", ">gv")
+
+
 -- Languages
 vim.keymap.set("n", "<leader>ou", "<cmd>lua require('vscode-neovim').call('typescript.removeUnusedImports')<CR>")
 vim.keymap.set("n", "<leader>oa", function()
