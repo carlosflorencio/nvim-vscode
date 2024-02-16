@@ -84,7 +84,11 @@ require("lazy").setup({
 	{
 		-- surround with selection highlight
 		"kylechui/nvim-surround",
-		opts = {},
+		opts = {
+			keymaps = {
+				visual = "T",
+			},
+		},
 		version = "*", -- Use for stability; omit to use `main` branch for the latest features
 		event = "VeryLazy",
 	},
@@ -331,9 +335,9 @@ vim.keymap.set("n", '<leader>s"', 'ysiw"', { desc = "Surround word with double q
 vim.keymap.set("n", "<leader>s'", "ysiw'", { desc = "Surround word with single quotes", remap = true })
 vim.keymap.set("n", "<leader>s`", "ysiw`", { desc = "Surround word with accent quotes", remap = true })
 -- visual shorcuts
-vim.keymap.set("v", "'", "S'", { desc = "Surround word with single quotes", remap = true })
-vim.keymap.set("v", '"', 'S"', { desc = "Surround word with double quotes", remap = true })
-vim.keymap.set("v", "`", "S`", { desc = "Surround word with accent quotes", remap = true })
+vim.keymap.set("v", "'", "T'", { desc = "Surround word with single quotes", remap = true })
+vim.keymap.set("v", '"', 'T"', { desc = "Surround word with double quotes", remap = true })
+vim.keymap.set("v", "`", "T`", { desc = "Surround word with accent quotes", remap = true })
 -- visual mode, nvimp-surround supports S', S", S>, etc
 
 -- ]] and [[
@@ -398,7 +402,6 @@ end, { expr = true })
 -- Better indenting
 vim.keymap.set("v", "<", "<gv")
 vim.keymap.set("v", ">", ">gv")
-
 
 -- Languages
 vim.keymap.set("n", "<leader>ou", "<cmd>lua require('vscode-neovim').call('typescript.removeUnusedImports')<CR>")
