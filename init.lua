@@ -263,15 +263,16 @@ vim.keymap.set("n", "<leader>fg", "<cmd>lua require('vscode-neovim').action('flo
 vim.keymap.set(
 	"n",
 	"<leader>j",
-	"<cmd>lua require('vscode-neovim').call('workbench.action.quickOpenLeastRecentlyUsedEditor')<CR>"
-)
-vim.keymap.set(
-	"n",
-	"<leader>h",
-	"<cmd>lua require('vscode-neovim').call('workbench.action.quickOpenPreviousRecentlyUsedEditorInGroup')<CR>"
+	"<cmd>lua require('vscode-neovim').call('workbench.action.showAllEditorsByMostRecentlyUsed')<CR>"
 )
 
 vim.keymap.set("n", "<leader>nf", "<cmd>lua require('vscode-neovim').call('create-relative-file.create')<CR>")
+
+-- Harpoon
+vim.keymap.set("n", "<leader>m", "<cmd>lua require('vscode-neovim').call('vscode-harpoon.addEditor')<CR>")
+vim.keymap.set("n", "<leader>h", "<cmd>lua require('vscode-neovim').call('vscode-harpoon.editorQuickPick')<CR>")
+vim.keymap.set("n", "<leader>H", "<cmd>lua require('vscode-neovim').call('vscode-harpoon.editEditors')<CR>")
+
 
 -- Git
 vim.keymap.set("n", "<leader>gG", "<cmd>lua require('vscode-neovim').call('workbench.view.scm')<CR>")
