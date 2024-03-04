@@ -258,7 +258,8 @@ vim.keymap.set("n", "<leader>fs", "<cmd>lua require('vscode-neovim').call('workb
 vim.keymap.set({ "n", "v" }, "<leader>ff", "<cmd>lua require('vscode-neovim').action('florencio.openFiles')<CR>")
 vim.keymap.set("n", "<leader>fw", "<cmd>lua require('vscode-neovim').action('florencio.searchInFiles')<CR>")
 vim.keymap.set("v", "<leader>fw", "<cmd>lua require('vscode-neovim').call('workbench.action.findInFiles')<CR>")
-vim.keymap.set("n", "<leader>fW", "<cmd>lua require('vscode-neovim').call('workbench.view.search')<CR>")
+vim.keymap.set("n", "<leader>fW", "<cmd>lua require('vscode-neovim').call('florencio.searchInFilesEditorCWD')<CR>")
+-- vim.keymap.set("n", "<leader>fW", "<cmd>lua require('vscode-neovim').call('workbench.view.search')<CR>")
 vim.keymap.set("n", "<leader>fg", "<cmd>lua require('vscode-neovim').action('florencio.openChangedFiles')<CR>")
 vim.keymap.set(
 	"n",
