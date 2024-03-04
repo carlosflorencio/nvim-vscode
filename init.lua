@@ -49,7 +49,7 @@ require("lazy").setup({
 					enabled = false,
 				},
 				char = {
-					enabled = true,
+					enabled = false,
 					keys = { "f", "F", ";", "," },
 					label = { exclude = "hjkliardco" },
 				},
@@ -272,7 +272,6 @@ vim.keymap.set("n", "<leader>nf", "<cmd>lua require('vscode-neovim').call('creat
 vim.keymap.set("n", "<leader>m", "<cmd>lua require('vscode-neovim').call('vscode-harpoon.addEditor')<CR>")
 vim.keymap.set("n", "<leader>h", "<cmd>lua require('vscode-neovim').call('vscode-harpoon.editorQuickPick')<CR>")
 vim.keymap.set("n", "<leader>H", "<cmd>lua require('vscode-neovim').call('vscode-harpoon.editEditors')<CR>")
-
 
 -- Git
 vim.keymap.set("n", "<leader>gG", "<cmd>lua require('vscode-neovim').call('workbench.view.scm')<CR>")
