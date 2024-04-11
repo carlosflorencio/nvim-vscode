@@ -381,6 +381,7 @@ vim.keymap.set("n", "<leader>lR", "<cmd>lua require('vscode-neovim').call('edito
 vim.keymap.set("n", "gI", "<cmd>lua require('vscode-neovim').call('editor.action.goToImplementation')<cr>")
 vim.keymap.set("n", "gr", "<cmd>lua require('vscode-neovim').call('editor.action.goToReferences')<cr>")
 vim.keymap.set("n", "gd", "<cmd>lua require('vscode-neovim').call('editor.action.peekDefinition')<cr>")
+vim.keymap.set("n", "gT", "<cmd>lua require('vscode-neovim').call('editor.action.goToTypeDefinition')<cr>")
 
 -- Don't yank empty lines into the main register
 vim.keymap.set("n", "dd", function()
