@@ -63,9 +63,9 @@ require("lazy").setup({
 			{ "R",     mode = { "o", "x" },      function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
 			{ "<c-s>", mode = { "c" },           function() require("flash").toggle() end,            desc = "Toggle Flash Search" },
 		}
-,
 	},
 	{
+		-- required for cmd + l
 		"vscode-neovim/vscode-multi-cursor.nvim",
 		event = "VeryLazy",
 		opts = {},
@@ -167,14 +167,26 @@ require("lazy").setup({
 		-- event = "BufRead",
 		dependencies = "nvim-lua/plenary.nvim",
 		config = function()
-			require("gitlinker").setup({
+			require('gitlinker').setup {
 				opts = {
 					add_current_line_on_normal_mode = true,
-					action_callback = require("gitlinker.actions").open_in_browser,
+					action_callback = require('gitlinker.actions').open_in_browser,
 					print_url = true,
 					mappings = nil,
 				},
-			})
+				callbacks = {
+					['github.com'] = function(url_data)
+						-- fix github.com-nbcu
+						url_data.host = 'github.com'
+
+						if url_data.repo:find '/bff' then
+							url_data.rev = 'master'
+						end
+
+						return require('gitlinker.hosts').get_github_type_url(url_data)
+					end,
+				},
+			}
 		end,
 		keys = {
 			{
@@ -202,8 +214,8 @@ require("lazy").setup({
 
 -- Options
 vim.o.clipboard = "unnamedplus" -- system clipboard
-vim.o.ignorecase = true -- Ignore case in searches / ?
-vim.o.relativenumber = true -- Relative line numbers
+vim.o.ignorecase = true         -- Ignore case in searches / ?
+vim.o.relativenumber = true     -- Relative line numbers
 -- vim.o.undofile = true -- Save undo history
 
 ----------------- Keymaps
@@ -217,6 +229,7 @@ vim.keymap.set("n", "<leader>cw", "<cmd>lua require('vscode-neovim').call('workb
 vim.keymap.set("n", "<leader>cs", "<cmd>lua require('vscode-neovim').call('workbench.action.closeEditorsAndGroup')<CR>")
 vim.keymap.set("n", "<leader>cW", "<cmd>lua require('vscode-neovim').call('workbench.action.closeWindow')<CR>")
 vim.keymap.set("n", "<leader>k", "<cmd>lua require('vscode-neovim').call('workbench.action.keepEditor')<CR>")
+vim.keymap.set("n", "<leader>b", "<cmd>lua require('vscode-neovim').call('workbench.action.toggleAuxiliaryBar')<CR>")
 vim.keymap.set("n", "L", "<cmd>lua require('vscode-neovim').call('workbench.action.nextEditor')<CR>")
 vim.keymap.set("n", "H", "<cmd>lua require('vscode-neovim').call('workbench.action.previousEditor')<CR>")
 vim.keymap.set(
@@ -234,15 +247,13 @@ vim.keymap.set("n", "<leader>;", "<cmd>lua require('vscode-neovim').call('vsnetr
 vim.keymap.set(
 	"n",
 	"<leader>aa",
-	"<cmd>lua require('vscode-neovim').call('workbench.action.openQuickChat.copilot')<CR>"
+	"<cmd>lua require('vscode-neovim').call('workbench.action.openQuickChat')<CR>"
 )
-vim.keymap.set("n", "<leader>aA", "<cmd>lua require('vscode-neovim').call('workbench.action.openChat.copilot')<CR>")
-vim.keymap.set("n", "<leader>aE", "<cmd>lua require('vscode-neovim').call('workbench.action.openChat.copilot')<CR>")
-vim.keymap.set("n", "<leader>ac", "<cmd>lua require('vscode-neovim').call('workbench.action.chat.open')<CR>")
+vim.keymap.set("n", "<leader>aA", "<cmd>lua require('vscode-neovim').call('workbench.panel.chat')<CR>")
 vim.keymap.set(
 	"n",
-	"<leader>aC",
-	"<cmd>lua require('vscode-neovim').call('github.copilot.interactiveEditor.generateDocs')<CR>"
+	"<leader>ac",
+	"<cmd>lua require('vscode-neovim').call('github.copilot.chat.generateDocs')<CR>"
 )
 vim.keymap.set(
 	"n",
@@ -255,7 +266,8 @@ vim.keymap.set("v", "<leader>aa", "<cmd>lua require('vscode-neovim').call('inlin
 vim.keymap.set("n", "<leader>fI", "<cmd>lua require('vscode-neovim').call('workbench.action.showAllSymbols')<CR>")
 vim.keymap.set("n", "<leader>fi", "<cmd>lua require('vscode-neovim').call('workbench.action.gotoSymbol')<CR>")
 vim.keymap.set("n", "<leader>fs", "<cmd>lua require('vscode-neovim').call('workbench.action.gotoSymbol')<CR>")
-vim.keymap.set({ "n", "v" }, "<leader>ff", "<cmd>lua require('vscode-neovim').action('florencio.openFiles')<CR>")
+vim.keymap.set({ "n", "v" }, "<leader>ff", "<cmd>lua require('vscode-neovim').action('workbench.action.quickOpen')<CR>")
+vim.keymap.set({ "n", "v" }, "<leader>fa", "<cmd>lua require('vscode-neovim').action('florencio.openFiles')<CR>")
 vim.keymap.set("n", "<leader>fw", "<cmd>lua require('vscode-neovim').action('florencio.searchInFiles')<CR>")
 vim.keymap.set("v", "<leader>fw", "<cmd>lua require('vscode-neovim').call('workbench.action.findInFiles')<CR>")
 vim.keymap.set("n", "<leader>fW", "<cmd>lua require('vscode-neovim').call('florencio.searchInFilesEditorCWD')<CR>")
@@ -307,7 +319,10 @@ vim.keymap.set(
 vim.keymap.set(
 	"n",
 	"<leader>sm",
-	"<cmd>lua require('vscode-neovim').call('workbench.action.toggleMaximizeEditorGroup')<cr>"
+	function()
+		require('vscode-neovim').action('workbench.action.toggleMaximizeEditorGroup')
+		require('vscode-neovim').action('workbench.action.closeAuxiliaryBar')
+	end
 )
 
 -- new lines
@@ -322,7 +337,7 @@ vim.keymap.set({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>")
 -- Editing
 vim.keymap.set("v", "y", "mcy`c") -- yank without moving cursor, using marks
 vim.keymap.set("v", "<C-p>", "y'>p")
-vim.keymap.set("x", "p", "P") -- paste and select pasted text
+vim.keymap.set("x", "p", "P")     -- paste and select pasted text
 vim.keymap.set("v", "<CR>", "<cmd>lua require('vscode-neovim').call('editor.action.smartSelect.expand')<CR>")
 vim.keymap.set("n", "<BS>", "ciw")
 vim.keymap.set("v", "<leader>i", "<esc>`<i", { desc = "Insert at beginning selection" })
