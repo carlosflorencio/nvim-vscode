@@ -63,6 +63,7 @@ require("lazy").setup({
 			{ "R",     mode = { "o", "x" },      function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
 			{ "<c-s>", mode = { "c" },           function() require("flash").toggle() end,            desc = "Toggle Flash Search" },
 		}
+		,
 	},
 	{
 		-- required for cmd + l
@@ -167,26 +168,26 @@ require("lazy").setup({
 		-- event = "BufRead",
 		dependencies = "nvim-lua/plenary.nvim",
 		config = function()
-			require('gitlinker').setup {
+			require("gitlinker").setup({
 				opts = {
 					add_current_line_on_normal_mode = true,
-					action_callback = require('gitlinker.actions').open_in_browser,
+					action_callback = require("gitlinker.actions").open_in_browser,
 					print_url = true,
 					mappings = nil,
 				},
 				callbacks = {
-					['github.com'] = function(url_data)
+					["github.com"] = function(url_data)
 						-- fix github.com-nbcu
-						url_data.host = 'github.com'
+						url_data.host = "github.com"
 
-						if url_data.repo:find '/bff' then
-							url_data.rev = 'master'
+						if url_data.repo:find("/bff") then
+							url_data.rev = "master"
 						end
 
-						return require('gitlinker.hosts').get_github_type_url(url_data)
+						return require("gitlinker.hosts").get_github_type_url(url_data)
 					end,
 				},
-			}
+			})
 		end,
 		keys = {
 			{
@@ -244,17 +245,9 @@ vim.keymap.set("n", "<leader>cab", "<cmd>lua require('vscode-neovim').call('work
 vim.keymap.set("n", "<leader>;", "<cmd>lua require('vscode-neovim').call('vsnetrw.open')<CR>")
 
 -- AI
-vim.keymap.set(
-	"n",
-	"<leader>aa",
-	"<cmd>lua require('vscode-neovim').call('workbench.action.openQuickChat')<CR>"
-)
+vim.keymap.set("n", "<leader>aa", "<cmd>lua require('vscode-neovim').call('workbench.action.openQuickChat')<CR>")
 vim.keymap.set("n", "<leader>aA", "<cmd>lua require('vscode-neovim').call('workbench.panel.chat')<CR>")
-vim.keymap.set(
-	"n",
-	"<leader>ac",
-	"<cmd>lua require('vscode-neovim').call('github.copilot.chat.generateDocs')<CR>"
-)
+vim.keymap.set("n", "<leader>ac", "<cmd>lua require('vscode-neovim').call('github.copilot.chat.generateDocs')<CR>")
 vim.keymap.set(
 	"n",
 	"<leader>at",
@@ -299,6 +292,7 @@ vim.keymap.set("n", "<leader>gR", "<cmd>lua require('vscode-neovim').call('git.c
 -- Toggles
 vim.keymap.set("n", "<leader>tw", "<cmd>lua require('vscode-neovim').call('editor.action.toggleWordWrap')<CR>")
 vim.keymap.set("n", "<leader>TT", "<cmd>lua require('vscode-neovim').call('workbench.action.toggleZenMode')<CR>")
+vim.keymap.set("n", "<leader>z", "<cmd>lua require('vscode-neovim').call('workbench.action.toggleZenMode')<CR>")
 vim.keymap.set("n", "<leader>tc", "<cmd>lua require('vscode-neovim').call('workbench.action.toggleCenteredLayout')<CR>")
 vim.keymap.set("n", "<leader>tt", "<cmd>lua require('vscode-neovim').call('workbench.actions.view.problems')<CR>")
 
@@ -316,14 +310,10 @@ vim.keymap.set(
 	"<leader>sh",
 	"<cmd>lua require('vscode-neovim').call('workbench.action.splitEditorOrthogonal')<cr>"
 )
-vim.keymap.set(
-	"n",
-	"<leader>sm",
-	function()
-		require('vscode-neovim').action('workbench.action.toggleMaximizeEditorGroup')
-		require('vscode-neovim').action('workbench.action.closeAuxiliaryBar')
-	end
-)
+vim.keymap.set("n", "<leader>sm", function()
+	require("vscode-neovim").action("workbench.action.toggleMaximizeEditorGroup")
+	require("vscode-neovim").action("workbench.action.closeAuxiliaryBar")
+end)
 
 -- new lines
 vim.keymap.set("n", "] ", "o<ESC>k")
