@@ -10,6 +10,7 @@
   "nvim-treesitter-textobjects": { "branch": "master", "commit": "3e450cd85243da99dc23ebbf14f9c70e9a0c26a4" },
   "plenary.nvim": { "branch": "master", "commit": "2d9b06177a975543726ce5c73fca176cedbffe9d" },
   "ts-node-action": { "branch": "master", "commit": "6d3b60754fd87963d70eadaa2f77873b447eac26" },
+  "vim-indent-object": { "branch": "master", "commit": "8ab36d5ec2a3a60468437a95e142ce994df598c6" },
   "vim-repeat": { "branch": "master", "commit": "65846025c15494983dafe5e3b46c8f88ab2e9635" },
   "vscode-multi-cursor.nvim": { "branch": "main", "commit": "210d64a6d190383a81b8dcdf8779d357006f3a69" }
 }

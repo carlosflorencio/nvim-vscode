@@ -63,7 +63,7 @@ require("lazy").setup({
 			{ "R",     mode = { "o", "x" },      function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
 			{ "<c-s>", mode = { "c" },           function() require("flash").toggle() end,            desc = "Toggle Flash Search" },
 		}
-		,
+,
 	},
 	{
 		-- required for cmd + l
@@ -163,6 +163,14 @@ require("lazy").setup({
 		end,
 	},
 	{
+		-- i motion
+		-- <count>ai  An Indentation level and line above.
+		-- <count>ii  Inner Indentation level (no line above).
+		-- <count>aI  An Indentation level and lines above/below.
+		-- <count>iI  Inner Indentation level (no lines above/below).
+		"michaeljsmith/vim-indent-object",
+	},
+	{
 		-- generate github links
 		"ruifm/gitlinker.nvim",
 		-- event = "BufRead",
@@ -176,7 +184,7 @@ require("lazy").setup({
 					mappings = nil,
 				},
 				callbacks = {
-					["github.com"] = function(url_data)
+					["github-nbcu.com"] = function(url_data)
 						-- fix github.com-nbcu
 						url_data.host = "github.com"
 
@@ -215,8 +223,8 @@ require("lazy").setup({
 
 -- Options
 vim.o.clipboard = "unnamedplus" -- system clipboard
-vim.o.ignorecase = true         -- Ignore case in searches / ?
-vim.o.relativenumber = true     -- Relative line numbers
+vim.o.ignorecase = true -- Ignore case in searches / ?
+vim.o.relativenumber = true -- Relative line numbers
 -- vim.o.undofile = true -- Save undo history
 
 ----------------- Keymaps
@@ -327,7 +335,7 @@ vim.keymap.set({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>")
 -- Editing
 vim.keymap.set("v", "y", "mcy`c") -- yank without moving cursor, using marks
 vim.keymap.set("v", "<C-p>", "y'>p")
-vim.keymap.set("x", "p", "P")     -- paste and select pasted text
+vim.keymap.set("x", "p", "P") -- paste and select pasted text
 vim.keymap.set("v", "<CR>", "<cmd>lua require('vscode-neovim').call('editor.action.smartSelect.expand')<CR>")
 vim.keymap.set("n", "<BS>", "ciw")
 vim.keymap.set("v", "<leader>i", "<esc>`<i", { desc = "Insert at beginning selection" })
@@ -353,8 +361,10 @@ vim.keymap.set("n", "[r", "<cmd>lua require('vscode-neovim').call('references-vi
 vim.keymap.set("n", "]r", "<cmd>lua require('vscode-neovim').call('references-view.next')<CR>")
 vim.keymap.set("n", "[e", "<cmd>lua require('vscode-neovim').call('florencio.goToPreviousError')<CR>")
 vim.keymap.set("n", "]e", "<cmd>lua require('vscode-neovim').call('florencio.goToNextError')<CR>")
-vim.keymap.set("n", "[d", "<cmd>lua require('vscode-neovim').call('florencio.goToPreviousDiagnostic')<CR>")
 vim.keymap.set("n", "]d", "<cmd>lua require('vscode-neovim').call('florencio.goToNextDiagnostic')<CR>")
+vim.keymap.set("n", "[d", "<cmd>lua require('vscode-neovim').call('florencio.goToPreviousDiagnostic')<CR>")
+vim.keymap.set("n", "]w", "<cmd>lua require('vscode-neovim').call('florencio.goToNextWarning')<CR>")
+vim.keymap.set("n", "[w", "<cmd>lua require('vscode-neovim').call('florencio.goToPreviousWarning')<CR>")
 vim.keymap.set("n", "[c", "<cmd>lua require('vscode-neovim').call('workbench.action.editor.previousChange')<CR>")
 vim.keymap.set("n", "]c", "<cmd>lua require('vscode-neovim').call('workbench.action.editor.nextChange')<CR>")
 vim.keymap.set("n", "[m", "['")
