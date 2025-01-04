@@ -250,6 +250,10 @@ vim.keymap.set({ "n", "v" }, "<leader>'", "<cmd>lua require('vscode-neovim').cal
 vim.keymap.set("n", "<leader>E", "<cmd>lua require('vscode-neovim').call('workbench.action.toggleAuxiliaryBar')<CR>")
 vim.keymap.set("n", "<leader>r", "<cmd>lua require('vscode-neovim').call('workbench.action.toggleAuxiliaryBar')<CR>")
 vim.keymap.set("n", "<leader>cab", "<cmd>lua require('vscode-neovim').call('workbench.action.closeOtherEditors')<CR>")
+vim.keymap.set("n", "<leader>caw", function()
+	require("vscode-neovim").call("workbench.action.closeSidebar")
+	require("vscode-neovim").call("workbench.action.closeAuxiliaryBar")
+end)
 vim.keymap.set("n", "<leader>;", "<cmd>lua require('vscode-neovim').call('vsnetrw.open')<CR>")
 
 -- AI
@@ -336,6 +340,7 @@ vim.keymap.set({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>")
 vim.keymap.set("v", "y", "mcy`c") -- yank without moving cursor, using marks
 vim.keymap.set("v", "<C-p>", "y'>p")
 vim.keymap.set("x", "p", "P") -- paste and select pasted text
+vim.keymap.set("n", "gp", "p`]") -- paste line below and move cursor to the end of the pasted text
 vim.keymap.set("v", "<CR>", "<cmd>lua require('vscode-neovim').call('editor.action.smartSelect.expand')<CR>")
 vim.keymap.set("n", "<BS>", "ciw")
 vim.keymap.set("v", "<leader>i", "<esc>`<i", { desc = "Insert at beginning selection" })
