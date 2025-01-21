@@ -294,12 +294,13 @@ vim.keymap.set("n", "<leader>H", "<cmd>lua require('vscode-neovim').call('vscode
 -- Git
 vim.keymap.set("n", "<leader>gG", "<cmd>lua require('vscode-neovim').call('workbench.view.scm')<CR>")
 vim.keymap.set("n", "<leader>gg", "<cmd>lua require('vscode-neovim').action('florencio.lazygit')<CR>")
-vim.keymap.set("n", "<leader>gb", "<cmd>lua require('vscode-neovim').call('gitlens.gitCommands.switch')<CR>")
+vim.keymap.set("n", "<leader>gb", "<cmd>lua require('vscode-neovim').call('gitlens.toggleFileBlame')<CR>")
 -- vim.keymap.set("n", "<leader>gy", "<cmd>lua require('vscode-neovim').call('extension.openInGitHub')<CR>")
 vim.keymap.set("n", "<leader>gp", "<cmd>lua require('vscode-neovim').call('editor.action.dirtydiff.next')<CR>")
 vim.keymap.set("n", "<leader>gP", "<cmd>lua require('vscode-neovim').call('git.pull')<CR>")
 vim.keymap.set("n", "<leader>gr", "<cmd>lua require('vscode-neovim').call('git.revertSelectedRanges')<CR>")
 vim.keymap.set("n", "<leader>gR", "<cmd>lua require('vscode-neovim').call('git.clean')<CR>")
+vim.keymap.set("n", "<leader>gc", "<cmd>lua require('vscode-neovim').call('workbench.scm.focus')<CR>")
 
 -- Toggles
 vim.keymap.set("n", "<leader>tw", "<cmd>lua require('vscode-neovim').call('editor.action.toggleWordWrap')<CR>")
