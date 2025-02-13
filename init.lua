@@ -16,6 +16,17 @@ vim.g.mapleader = " "
 require("lazy").setup({
 	{ "tpope/vim-repeat", event = "VeryLazy" },
 	{
+		"stevearc/oil.nvim",
+		---@module 'oil'
+		---@type oil.SetupOpts
+		opts = {},
+		-- Optional dependencies
+		-- dependencies = { { "echasnovski/mini.icons", opts = {} } },
+		-- dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if you prefer nvim-web-devicons
+		-- Lazy loading is not recommended because it is very tricky to make it work correctly in all situations.
+		lazy = false,
+	},
+	{
 		"nvim-treesitter/nvim-treesitter",
 		version = false, -- last release is way too old and doesn't work on Windows
 		build = ":TSUpdate",
@@ -246,9 +257,10 @@ vim.keymap.set(
 	"<leader>e",
 	"<cmd>lua require('vscode-neovim').call('workbench.action.toggleSidebarVisibility')<CR>"
 )
-vim.keymap.set({ "n", "v" }, "<leader>'", "<cmd>lua require('vscode-neovim').call('workbench.view.explorer')<CR>")
-vim.keymap.set("n", "<leader>E", "<cmd>lua require('vscode-neovim').call('workbench.action.toggleAuxiliaryBar')<CR>")
-vim.keymap.set("n", "<leader>r", "<cmd>lua require('vscode-neovim').call('workbench.action.toggleAuxiliaryBar')<CR>")
+vim.keymap.set({ "n", "v" }, "<leader>E", "<cmd>lua require('vscode-neovim').call('workbench.view.explorer')<CR>")
+
+-- vim.keymap.set({ "n", "v" }, "<leader>E", "<cmd>Oil<cr><CR>")
+
 vim.keymap.set("n", "<leader>cab", "<cmd>lua require('vscode-neovim').call('workbench.action.closeOtherEditors')<CR>")
 vim.keymap.set("n", "<leader>caw", function()
 	require("vscode-neovim").call("workbench.action.closeSidebar")
