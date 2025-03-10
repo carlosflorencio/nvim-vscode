@@ -74,6 +74,7 @@ require("lazy").setup({
 			{ "R",     mode = { "o", "x" },      function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
 			{ "<c-s>", mode = { "c" },           function() require("flash").toggle() end,            desc = "Toggle Flash Search" },
 		}
+,
 	},
 	{
 		-- required for cmd + l
@@ -233,8 +234,8 @@ require("lazy").setup({
 
 -- Options
 vim.o.clipboard = "unnamedplus" -- system clipboard
-vim.o.ignorecase = true         -- Ignore case in searches / ?
-vim.o.relativenumber = true     -- Relative line numbers
+vim.o.ignorecase = true -- Ignore case in searches / ?
+vim.o.relativenumber = true -- Relative line numbers
 -- vim.o.undofile = true -- Save undo history
 
 ----------------- Keymaps
@@ -265,18 +266,17 @@ vim.keymap.set("n", "<leader>caw", function()
 	require("vscode-neovim").call("workbench.action.closeSidebar")
 	require("vscode-neovim").call("workbench.action.closeAuxiliaryBar")
 end)
--- vim.keymap.set("n", "<leader>;", "<cmd>lua require('vscode-neovim').call('vsnetrw.open')<CR>")
+vim.keymap.set("n", "<leader>;", "<cmd>lua require('vscode-neovim').call('vsnetrw.open')<CR>")
 
-vim.keymap.set("n", "<leader>;", function()
-	-- open a new terminal editor
-	-- cd to the current buffer directory
-	-- run a command: nvim .
-	require("vscode-neovim").call("workbench.action.createTerminalEditor")
-	local cwd = vim.fn.expand("%:p:h")
-	require("vscode-neovim").call("workbench.action.terminal.sendSequence", { args = { text = "cd " .. cwd .. "\n" } })
-	require("vscode-neovim").call("workbench.action.terminal.sendSequence", { args = { text = "nvim .\n" } })
-end)
-
+-- vim.keymap.set("n", "<leader>;", function()
+-- 	-- open a new terminal editor
+-- 	-- cd to the current buffer directory
+-- 	-- run a command: nvim .
+-- 	require("vscode-neovim").call("workbench.action.createTerminalEditor")
+-- 	local cwd = vim.fn.expand("%:p:h")
+-- 	require("vscode-neovim").call("workbench.action.terminal.sendSequence", { args = { text = "cd " .. cwd .. "\n" } })
+-- 	require("vscode-neovim").call("workbench.action.terminal.sendSequence", { args = { text = "nvim .\n" } })
+-- end)
 
 -- AI
 vim.keymap.set("n", "<leader>aa", "<cmd>lua require('vscode-neovim').call('workbench.action.openQuickChat')<CR>")
@@ -362,8 +362,8 @@ vim.keymap.set({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>")
 -- Editing
 vim.keymap.set("v", "y", "mcy`c") -- yank without moving cursor, using marks
 vim.keymap.set("v", "<C-p>", "y'>p")
-vim.keymap.set("x", "p", "P")     -- paste and select pasted text
-vim.keymap.set("n", "gp", "p`]")  -- paste line below and move cursor to the end of the pasted text
+vim.keymap.set("x", "p", "P") -- paste and select pasted text
+vim.keymap.set("n", "gp", "p`]") -- paste line below and move cursor to the end of the pasted text
 vim.keymap.set("v", "<CR>", "<cmd>lua require('vscode-neovim').call('editor.action.smartSelect.expand')<CR>")
 vim.keymap.set("n", "<BS>", "ciw")
 vim.keymap.set("v", "<leader>i", "<esc>`<i", { desc = "Insert at beginning selection" })
@@ -424,7 +424,7 @@ vim.keymap.set("n", "<leader>lR", "<cmd>lua require('vscode-neovim').call('edito
 vim.keymap.set("n", "gI", "<cmd>lua require('vscode-neovim').call('editor.action.goToImplementation')<cr>")
 vim.keymap.set("n", "gr", "<cmd>lua require('vscode-neovim').call('editor.action.goToReferences')<cr>")
 vim.keymap.set("n", "gd", "<cmd>lua require('vscode-neovim').call('editor.action.peekDefinition')<cr>")
-vim.keymap.set("n", "gT", "<cmd>lua require('vscode-neovim').call('editor.action.goToTypeDefinition')<cr>")
+vim.keymap.set("n", "gt", "<cmd>lua require('vscode-neovim').call('editor.action.goToTypeDefinition')<cr>")
 
 -- Don't yank empty lines into the main register
 vim.keymap.set("n", "dd", function()
