@@ -279,6 +279,11 @@ vim.keymap.set("n", "<leader>;", "<cmd>lua require('vscode-neovim').call('vsnetr
 -- end)
 
 -- AI
+vim.keymap.set(
+	{ "n" },
+	"<tab>",
+	"<cmd>lua require('vscode-neovim').call('editor.action.inlineSuggest.triggerInlineEditExplicit')<cr>"
+)
 vim.keymap.set("n", "<leader>aa", "<cmd>lua require('vscode-neovim').call('workbench.action.openQuickChat')<CR>")
 vim.keymap.set("n", "<leader>aA", "<cmd>lua require('vscode-neovim').call('workbench.panel.chat')<CR>")
 vim.keymap.set("n", "<leader>ac", "<cmd>lua require('vscode-neovim').call('github.copilot.chat.generateDocs')<CR>")
@@ -295,7 +300,8 @@ vim.keymap.set("n", "<leader>fi", "<cmd>lua require('vscode-neovim').call('workb
 vim.keymap.set("n", "<leader>fs", "<cmd>lua require('vscode-neovim').call('workbench.action.gotoSymbol')<CR>")
 vim.keymap.set({ "n", "v" }, "<leader>ff", "<cmd>lua require('vscode-neovim').action('workbench.action.quickOpen')<CR>")
 vim.keymap.set({ "n", "v" }, "<leader>fa", "<cmd>lua require('vscode-neovim').action('florencio.openFiles')<CR>")
-vim.keymap.set("n", "<leader>fw", "<cmd>lua require('vscode-neovim').action('florencio.searchInFiles')<CR>")
+-- vim.keymap.set("n", "<leader>fw", "<cmd>lua require('vscode-neovim').action('florencio.searchInFiles')<CR>")
+vim.keymap.set("n", "<leader>fw", "<cmd>lua require('vscode-neovim').action('workbench.action.quickTextSearch')<CR>")
 vim.keymap.set("v", "<leader>fw", "<cmd>lua require('vscode-neovim').call('workbench.action.findInFiles')<CR>")
 vim.keymap.set("n", "<leader>fW", "<cmd>lua require('vscode-neovim').call('florencio.searchInFilesEditorCWD')<CR>")
 -- vim.keymap.set("n", "<leader>fW", "<cmd>lua require('vscode-neovim').call('workbench.view.search')<CR>")
