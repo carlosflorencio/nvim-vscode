@@ -273,32 +273,32 @@ vim.o.relativenumber = true     -- Relative line numbers
 ----------------- Keymaps
 
 -- Window Management
-vim.keymap.set({ "n", "v" }, "<c-h>", "<cmd>lua require('vscode-neovim').call('workbench.action.navigateLeft')<cr>")
-vim.keymap.set({ "n", "v" }, "<c-l>", "<cmd>lua require('vscode-neovim').call('workbench.action.navigateRight')<cr>")
-vim.keymap.set({ "n", "v" }, "<c-j>", "<cmd>lua require('vscode-neovim').call('workbench.action.navigateDown')<cr>")
-vim.keymap.set({ "n", "v" }, "<c-k>", "<cmd>lua require('vscode-neovim').call('workbench.action.navigateUp')<cr>")
-vim.keymap.set("n", "<leader>cw", "<cmd>lua require('vscode-neovim').call('workbench.action.closeActiveEditor')<CR>")
-vim.keymap.set("n", "<leader>cs", "<cmd>lua require('vscode-neovim').call('workbench.action.closeEditorsAndGroup')<CR>")
-vim.keymap.set("n", "<leader>cW", "<cmd>lua require('vscode-neovim').call('workbench.action.closeWindow')<CR>")
-vim.keymap.set("n", "<leader>k", "<cmd>lua require('vscode-neovim').call('workbench.action.keepEditor')<CR>")
-vim.keymap.set("n", "<leader>b", "<cmd>lua require('vscode-neovim').call('workbench.action.toggleAuxiliaryBar')<CR>")
-vim.keymap.set("n", "L", "<cmd>lua require('vscode-neovim').call('workbench.action.nextEditor')<CR>")
-vim.keymap.set("n", "H", "<cmd>lua require('vscode-neovim').call('workbench.action.previousEditor')<CR>")
+vim.keymap.set({ "n", "v" }, "<c-h>", "<cmd>lua require('vscode-neovim').action('workbench.action.navigateLeft')<cr>")
+vim.keymap.set({ "n", "v" }, "<c-l>", "<cmd>lua require('vscode-neovim').action('workbench.action.navigateRight')<cr>")
+vim.keymap.set({ "n", "v" }, "<c-j>", "<cmd>lua require('vscode-neovim').action('workbench.action.navigateDown')<cr>")
+vim.keymap.set({ "n", "v" }, "<c-k>", "<cmd>lua require('vscode-neovim').action('workbench.action.navigateUp')<cr>")
+vim.keymap.set("n", "<leader>cw", "<cmd>lua require('vscode-neovim').action('workbench.action.closeActiveEditor')<CR>")
+vim.keymap.set("n", "<leader>cs", "<cmd>lua require('vscode-neovim').action('workbench.action.closeEditorsAndGroup')<CR>")
+vim.keymap.set("n", "<leader>cW", "<cmd>lua require('vscode-neovim').action('workbench.action.closeWindow')<CR>")
+vim.keymap.set("n", "<leader>k", "<cmd>lua require('vscode-neovim').action('workbench.action.keepEditor')<CR>")
+vim.keymap.set("n", "<leader>b", "<cmd>lua require('vscode-neovim').action('workbench.action.toggleAuxiliaryBar')<CR>")
+vim.keymap.set("n", "L", "<cmd>lua require('vscode-neovim').action('workbench.action.nextEditor')<CR>")
+vim.keymap.set("n", "H", "<cmd>lua require('vscode-neovim').action('workbench.action.previousEditor')<CR>")
 vim.keymap.set(
 	"n",
 	"<leader>e",
-	"<cmd>lua require('vscode-neovim').call('workbench.action.toggleSidebarVisibility')<CR>"
+	"<cmd>lua require('vscode-neovim').action('workbench.action.toggleSidebarVisibility')<CR>"
 )
-vim.keymap.set({ "n", "v" }, "<leader>E", "<cmd>lua require('vscode-neovim').call('workbench.view.explorer')<CR>")
+vim.keymap.set({ "n", "v" }, "<leader>E", "<cmd>lua require('vscode-neovim').action('workbench.view.explorer')<CR>")
 
 -- vim.keymap.set({ "n", "v" }, "<leader>E", "<cmd>Oil<cr><CR>")
 
-vim.keymap.set("n", "<leader>cab", "<cmd>lua require('vscode-neovim').call('workbench.action.closeOtherEditors')<CR>")
+vim.keymap.set("n", "<leader>cab", "<cmd>lua require('vscode-neovim').action('workbench.action.closeOtherEditors')<CR>")
 vim.keymap.set("n", "<leader>caw", function()
-	require("vscode-neovim").call("workbench.action.closeSidebar")
-	require("vscode-neovim").call("workbench.action.closeAuxiliaryBar")
+	require("vscode-neovim").action("workbench.action.closeSidebar")
+	require("vscode-neovim").action("workbench.action.closeAuxiliaryBar")
 end)
-vim.keymap.set("n", "<leader>;", "<cmd>lua require('vscode-neovim').call('vsnetrw.open')<CR>")
+vim.keymap.set("n", "<leader>;", "<cmd>lua require('vscode-neovim').action('vsnetrw.open')<CR>")
 
 -- vim.keymap.set("n", "<leader>;", function()
 -- 	-- open a new terminal editor
@@ -314,74 +314,75 @@ vim.keymap.set("n", "<leader>;", "<cmd>lua require('vscode-neovim').call('vsnetr
 vim.keymap.set(
 	{ "n" },
 	"<tab>",
-	"<cmd>lua require('vscode-neovim').call('editor.action.inlineSuggest.triggerInlineEditExplicit')<cr>"
+	"<cmd>lua require('vscode-neovim').action('editor.action.inlineSuggest.triggerInlineEditExplicit')<cr>"
 )
-vim.keymap.set("n", "<leader>aa", "<cmd>lua require('vscode-neovim').call('workbench.action.openQuickChat')<CR>")
-vim.keymap.set("n", "<leader>aA", "<cmd>lua require('vscode-neovim').call('workbench.panel.chat')<CR>")
-vim.keymap.set("n", "<leader>ac", "<cmd>lua require('vscode-neovim').call('github.copilot.chat.generateDocs')<CR>")
+vim.keymap.set("n", "<leader>aa", "<cmd>lua require('vscode-neovim').action('workbench.action.openQuickChat')<CR>")
+vim.keymap.set("n", "<leader>aA", "<cmd>lua require('vscode-neovim').action('workbench.panel.chat')<CR>")
+vim.keymap.set("n", "<leader>ac", "<cmd>lua require('vscode-neovim').action('github.copilot.chat.generateDocs')<CR>")
 vim.keymap.set(
 	"n",
 	"<leader>at",
-	"<cmd>lua require('vscode-neovim').call('github.copilot.interactiveEditor.generateTests')<CR>"
+	"<cmd>lua require('vscode-neovim').action('github.copilot.interactiveEditor.generateTests')<CR>"
 )
-vim.keymap.set("v", "<leader>aa", "<cmd>lua require('vscode-neovim').call('inlineChat.start')<CR>")
+vim.keymap.set("v", "<leader>aa", "<cmd>lua require('vscode-neovim').action('inlineChat.start')<CR>")
 
 -- Files navigation
-vim.keymap.set("n", "<leader>fI", "<cmd>lua require('vscode-neovim').call('workbench.action.showAllSymbols')<CR>")
-vim.keymap.set("n", "<leader>fi", "<cmd>lua require('vscode-neovim').call('workbench.action.gotoSymbol')<CR>")
-vim.keymap.set("n", "<leader>fs", "<cmd>lua require('vscode-neovim').call('workbench.action.gotoSymbol')<CR>")
+vim.keymap.set("n", "<leader>fI", "<cmd>lua require('vscode-neovim').action('workbench.action.showAllSymbols')<CR>")
+vim.keymap.set("n", "<leader>fi", "<cmd>lua require('vscode-neovim').action('workbench.action.gotoSymbol')<CR>")
+vim.keymap.set("n", "<leader>fs", "<cmd>lua require('vscode-neovim').action('workbench.action.gotoSymbol')<CR>")
 vim.keymap.set({ "n", "v" }, "<leader>ff", "<cmd>lua require('vscode-neovim').action('workbench.action.quickOpen')<CR>")
 vim.keymap.set({ "n", "v" }, "<leader>fa", "<cmd>lua require('vscode-neovim').action('florencio.openFiles')<CR>")
--- vim.keymap.set("n", "<leader>fw", "<cmd>lua require('vscode-neovim').action('florencio.searchInFiles')<CR>")
 vim.keymap.set("n", "<leader>fw", "<cmd>lua require('vscode-neovim').action('workbench.action.quickTextSearch')<CR>")
-vim.keymap.set("v", "<leader>fw", "<cmd>lua require('vscode-neovim').call('workbench.action.findInFiles')<CR>")
-vim.keymap.set("n", "<leader>fW", "<cmd>lua require('vscode-neovim').call('florencio.searchInFilesEditorCWD')<CR>")
--- vim.keymap.set("n", "<leader>fW", "<cmd>lua require('vscode-neovim').call('workbench.view.search')<CR>")
+vim.keymap.set("v", "<leader>fw", "<cmd>lua require('vscode-neovim').action('workbench.action.findInFiles')<CR>")
+vim.keymap.set("n", "<leader>fW", "<cmd>lua require('vscode-neovim').action('florencio.searchInFiles')<CR>")
+vim.keymap.set("n", "<leader>FW", "<cmd>lua require('vscode-neovim').action('florencio.searchInFilesEditorCWD')<CR>")
+-- vim.keymap.set("n", "<leader>fW", "<cmd>lua require('vscode-neovim').action('workbench.view.search')<CR>")
 vim.keymap.set("n", "<leader>fg", "<cmd>lua require('vscode-neovim').action('florencio.openChangedFiles')<CR>")
 vim.keymap.set(
 	"n",
 	"<leader>j",
-	"<cmd>lua require('vscode-neovim').call('workbench.action.showAllEditorsByMostRecentlyUsed')<CR>"
+	"<cmd>lua require('vscode-neovim').action('workbench.action.showAllEditorsByMostRecentlyUsed')<CR>"
 )
 
-vim.keymap.set("n", "<leader>nf", "<cmd>lua require('vscode-neovim').call('create-relative-file.create')<CR>")
+vim.keymap.set("n", "<leader>nf", "<cmd>lua require('vscode-neovim').action('create-relative-file.create')<CR>")
 
 -- Harpoon
-vim.keymap.set("n", "<leader>m", "<cmd>lua require('vscode-neovim').call('vscode-harpoon.addEditor')<CR>")
-vim.keymap.set("n", "<leader>h", "<cmd>lua require('vscode-neovim').call('vscode-harpoon.editorQuickPick')<CR>")
-vim.keymap.set("n", "<leader>H", "<cmd>lua require('vscode-neovim').call('vscode-harpoon.editEditors')<CR>")
+vim.keymap.set("n", "<leader>m", "<cmd>lua require('vscode-neovim').action('vscode-harpoon.addEditor')<CR>")
+vim.keymap.set("n", "<leader>h", "<cmd>lua require('vscode-neovim').action('vscode-harpoon.editorQuickPick')<CR>")
+vim.keymap.set("n", "<leader>H", "<cmd>lua require('vscode-neovim').action('vscode-harpoon.editEditors')<CR>")
 
 -- Git
-vim.keymap.set("n", "<leader>gG", "<cmd>lua require('vscode-neovim').call('workbench.view.scm')<CR>")
-vim.keymap.set("n", "<leader>gg", "<cmd>lua require('vscode-neovim').action('florencio.lazygit')<CR>")
-vim.keymap.set("n", "<leader>gb", "<cmd>lua require('vscode-neovim').call('gitlens.toggleFileBlame')<CR>")
--- vim.keymap.set("n", "<leader>gy", "<cmd>lua require('vscode-neovim').call('extension.openInGitHub')<CR>")
-vim.keymap.set("n", "<leader>gp", "<cmd>lua require('vscode-neovim').call('editor.action.dirtydiff.next')<CR>")
-vim.keymap.set("n", "<leader>gP", "<cmd>lua require('vscode-neovim').call('git.pull')<CR>")
-vim.keymap.set("n", "<leader>gr", "<cmd>lua require('vscode-neovim').call('git.revertSelectedRanges')<CR>")
-vim.keymap.set("n", "<leader>gR", "<cmd>lua require('vscode-neovim').call('git.clean')<CR>")
-vim.keymap.set("n", "<leader>gc", "<cmd>lua require('vscode-neovim').call('workbench.scm.focus')<CR>")
+vim.keymap.set("n", "<leader>gG", "<cmd>lua require('vscode-neovim').action('workbench.view.scm')<CR>")
+vim.keymap.set("n", "<leader>gg", "<cmd>lua require('vscode-neovim').action('florencio.weztermLazyGit')<CR>")
+-- vim.keymap.set("n", "<leader>gg", "<cmd>lua require('vscode-neovim').action('florencio.lazygit')<CR>")
+vim.keymap.set("n", "<leader>gb", "<cmd>lua require('vscode-neovim').action('gitlens.toggleFileBlame')<CR>")
+-- vim.keymap.set("n", "<leader>gy", "<cmd>lua require('vscode-neovim').action('extension.openInGitHub')<CR>")
+vim.keymap.set("n", "<leader>gp", "<cmd>lua require('vscode-neovim').action('editor.action.dirtydiff.next')<CR>")
+vim.keymap.set("n", "<leader>gP", "<cmd>lua require('vscode-neovim').action('git.pull')<CR>")
+vim.keymap.set("n", "<leader>gr", "<cmd>lua require('vscode-neovim').action('git.revertSelectedRanges')<CR>")
+vim.keymap.set("n", "<leader>gR", "<cmd>lua require('vscode-neovim').action('git.clean')<CR>")
+vim.keymap.set("n", "<leader>gc", "<cmd>lua require('vscode-neovim').action('workbench.scm.focus')<CR>")
 
 -- Toggles
-vim.keymap.set("n", "<leader>tw", "<cmd>lua require('vscode-neovim').call('editor.action.toggleWordWrap')<CR>")
-vim.keymap.set("n", "<leader>TT", "<cmd>lua require('vscode-neovim').call('workbench.action.toggleZenMode')<CR>")
-vim.keymap.set("n", "<leader>z", "<cmd>lua require('vscode-neovim').call('workbench.action.toggleZenMode')<CR>")
-vim.keymap.set("n", "<leader>tc", "<cmd>lua require('vscode-neovim').call('workbench.action.toggleCenteredLayout')<CR>")
-vim.keymap.set("n", "<leader>tt", "<cmd>lua require('vscode-neovim').call('workbench.actions.view.problems')<CR>")
+vim.keymap.set("n", "<leader>tw", "<cmd>lua require('vscode-neovim').action('editor.action.toggleWordWrap')<CR>")
+vim.keymap.set("n", "<leader>TT", "<cmd>lua require('vscode-neovim').action('workbench.action.toggleZenMode')<CR>")
+vim.keymap.set("n", "<leader>z", "<cmd>lua require('vscode-neovim').action('workbench.action.toggleZenMode')<CR>")
+vim.keymap.set("n", "<leader>tc", "<cmd>lua require('vscode-neovim').action('workbench.action.toggleCenteredLayout')<CR>")
+vim.keymap.set("n", "<leader>tt", "<cmd>lua require('vscode-neovim').action('workbench.actions.view.problems')<CR>")
 
 -- Runs, Tasks
-vim.keymap.set("n", ",r", "<cmd>lua require('vscode-neovim').call('workbench.action.tasks.runTask')<CR>")
-vim.keymap.set("n", ",bb", "<cmd>lua require('vscode-neovim').call('editor.debug.action.toggleBreakpoint')<CR>")
+vim.keymap.set("n", ",r", "<cmd>lua require('vscode-neovim').action('workbench.action.tasks.runTask')<CR>")
+vim.keymap.set("n", ",bb", "<cmd>lua require('vscode-neovim').action('editor.debug.action.toggleBreakpoint')<CR>")
 
 -- Marks
 vim.keymap.set("n", "<leader>dm", "<cmd>delmarks!<CR>")
 
 -- Splits
-vim.keymap.set("n", "<leader>sv", "<cmd>lua require('vscode-neovim').call('workbench.action.splitEditor')<cr>")
+vim.keymap.set("n", "<leader>sv", "<cmd>lua require('vscode-neovim').action('workbench.action.splitEditor')<cr>")
 vim.keymap.set(
 	"n",
 	"<leader>sh",
-	"<cmd>lua require('vscode-neovim').call('workbench.action.splitEditorOrthogonal')<cr>"
+	"<cmd>lua require('vscode-neovim').action('workbench.action.splitEditorOrthogonal')<cr>"
 )
 vim.keymap.set("n", "<leader>sm", function()
 	require("vscode-neovim").action("workbench.action.toggleMaximizeEditorGroup")
@@ -402,10 +403,10 @@ vim.keymap.set("v", "y", "mcy`c") -- yank without moving cursor, using marks
 vim.keymap.set("v", "<C-p>", "y'>p")
 vim.keymap.set("x", "p", "P")     -- paste and select pasted text
 vim.keymap.set("n", "gp", "p`]")  -- paste line below and move cursor to the end of the pasted text
-vim.keymap.set("v", "<CR>", "<cmd>lua require('vscode-neovim').call('editor.action.smartSelect.expand')<CR>")
+vim.keymap.set("v", "<CR>", "<cmd>lua require('vscode-neovim').action('editor.action.smartSelect.expand')<CR>")
 vim.keymap.set("n", "<BS>", "ciw")
 vim.keymap.set("v", "<leader>i", "<esc>`<i", { desc = "Insert at beginning selection" })
-vim.keymap.set({ "n", "v" }, "<leader>fm", "<cmd>lua require('vscode-neovim').call('editor.action.formatDocument')<CR>")
+vim.keymap.set({ "n", "v" }, "<leader>fm", "<cmd>lua require('vscode-neovim').action('editor.action.formatDocument')<CR>")
 
 -- Surrounds keymaps
 vim.keymap.set("n", '<leader>S"', 'ysiW"', { desc = "Surround word with double quotes", remap = true })
@@ -421,48 +422,48 @@ vim.keymap.set("v", "`", "T`", { desc = "Surround word with accent quotes", rema
 -- visual mode, nvimp-surround supports S', S", S>, etc
 
 -- ]] and [[
-vim.keymap.set("n", "[q", "<cmd>lua require('vscode-neovim').call('search.action.focusPreviousSearchResult')<CR>")
-vim.keymap.set("n", "]q", "<cmd>lua require('vscode-neovim').call('search.action.focusNextSearchResult')<CR>")
-vim.keymap.set("n", "[r", "<cmd>lua require('vscode-neovim').call('references-view.prev')<CR>")
-vim.keymap.set("n", "]r", "<cmd>lua require('vscode-neovim').call('references-view.next')<CR>")
-vim.keymap.set("n", "[e", "<cmd>lua require('vscode-neovim').call('florencio.goToPreviousError')<CR>")
-vim.keymap.set("n", "]e", "<cmd>lua require('vscode-neovim').call('florencio.goToNextError')<CR>")
-vim.keymap.set("n", "]d", "<cmd>lua require('vscode-neovim').call('florencio.goToNextDiagnostic')<CR>")
-vim.keymap.set("n", "[d", "<cmd>lua require('vscode-neovim').call('florencio.goToPreviousDiagnostic')<CR>")
-vim.keymap.set("n", "]w", "<cmd>lua require('vscode-neovim').call('florencio.goToNextWarning')<CR>")
-vim.keymap.set("n", "[w", "<cmd>lua require('vscode-neovim').call('florencio.goToPreviousWarning')<CR>")
-vim.keymap.set("n", "[c", "<cmd>lua require('vscode-neovim').call('workbench.action.editor.previousChange')<CR>")
-vim.keymap.set("n", "]c", "<cmd>lua require('vscode-neovim').call('workbench.action.editor.nextChange')<CR>")
+vim.keymap.set("n", "[q", "<cmd>lua require('vscode-neovim').action('search.action.focusPreviousSearchResult')<CR>")
+vim.keymap.set("n", "]q", "<cmd>lua require('vscode-neovim').action('search.action.focusNextSearchResult')<CR>")
+vim.keymap.set("n", "[r", "<cmd>lua require('vscode-neovim').action('references-view.prev')<CR>")
+vim.keymap.set("n", "]r", "<cmd>lua require('vscode-neovim').action('references-view.next')<CR>")
+vim.keymap.set("n", "[e", "<cmd>lua require('vscode-neovim').action('florencio.goToPreviousError')<CR>")
+vim.keymap.set("n", "]e", "<cmd>lua require('vscode-neovim').action('florencio.goToNextError')<CR>")
+vim.keymap.set("n", "]d", "<cmd>lua require('vscode-neovim').action('florencio.goToNextDiagnostic')<CR>")
+vim.keymap.set("n", "[d", "<cmd>lua require('vscode-neovim').action('florencio.goToPreviousDiagnostic')<CR>")
+vim.keymap.set("n", "]w", "<cmd>lua require('vscode-neovim').action('florencio.goToNextWarning')<CR>")
+vim.keymap.set("n", "[w", "<cmd>lua require('vscode-neovim').action('florencio.goToPreviousWarning')<CR>")
+vim.keymap.set("n", "[c", "<cmd>lua require('vscode-neovim').action('workbench.action.editor.previousChange')<CR>")
+vim.keymap.set("n", "]c", "<cmd>lua require('vscode-neovim').action('workbench.action.editor.nextChange')<CR>")
 vim.keymap.set("n", "[m", "['")
 vim.keymap.set("n", "]m", "]'")
 
 -- Markdown Preview
 vim.keymap.set("n", "<leader>pp", function()
-	require("vscode-neovim").call("markdown.showPreviewToSide")
-	require("vscode-neovim").call("workbench.action.focusLeftGroup")
+	require("vscode-neovim").action("markdown.showPreviewToSide")
+	require("vscode-neovim").action("workbench.action.focusLeftGroup")
 end)
 
 vim.keymap.set("n", "<leader>pc", function()
-	require("vscode-neovim").call("workbench.action.focusRightGroup")
-	require("vscode-neovim").call("workbench.action.closeActiveEditor")
+	require("vscode-neovim").action("workbench.action.focusRightGroup")
+	require("vscode-neovim").action("workbench.action.closeActiveEditor")
 end)
 
 -- cycle between buffers
 -- vim.keymap.set("n", "<leader><space>", "<c-^>", { desc = "Cycle between buffers" } )
 
 -- Comments
-vim.keymap.set({ "n", "v" }, "<leader>/", "<cmd>lua require('vscode-neovim').call('editor.action.commentLine')<cr>")
+vim.keymap.set({ "n", "v" }, "<leader>/", "<cmd>lua require('vscode-neovim').action('editor.action.commentLine')<cr>")
 
 -- LSP
-vim.keymap.set({ "n", "v" }, "<leader>la", "<cmd>lua require('vscode-neovim').call('editor.action.quickFix')<cr>")
-vim.keymap.set("n", "<leader>lA", "<cmd>lua require('vscode-neovim').call('editor.action.showContextMenu')<cr>")
-vim.keymap.set("n", "<leader>lr", "<cmd>lua require('vscode-neovim').call('editor.action.rename')<cr>")
-vim.keymap.set("n", "<leader>lR", "<cmd>lua require('vscode-neovim').call('editor.action.renameFile')<cr>")
-vim.keymap.set("n", "<leader>lR", "<cmd>lua require('vscode-neovim').call('editor.action.renameFile')<cr>")
-vim.keymap.set("n", "gI", "<cmd>lua require('vscode-neovim').call('editor.action.goToImplementation')<cr>")
-vim.keymap.set("n", "gr", "<cmd>lua require('vscode-neovim').call('editor.action.goToReferences')<cr>")
-vim.keymap.set("n", "gd", "<cmd>lua require('vscode-neovim').call('editor.action.peekDefinition')<cr>")
-vim.keymap.set("n", "gt", "<cmd>lua require('vscode-neovim').call('editor.action.goToTypeDefinition')<cr>")
+vim.keymap.set({ "n", "v" }, "<leader>la", "<cmd>lua require('vscode-neovim').action('editor.action.quickFix')<cr>")
+vim.keymap.set("n", "<leader>lA", "<cmd>lua require('vscode-neovim').action('editor.action.showContextMenu')<cr>")
+vim.keymap.set("n", "<leader>lr", "<cmd>lua require('vscode-neovim').action('editor.action.rename')<cr>")
+vim.keymap.set("n", "<leader>lR", "<cmd>lua require('vscode-neovim').action('editor.action.renameFile')<cr>")
+vim.keymap.set("n", "<leader>lR", "<cmd>lua require('vscode-neovim').action('editor.action.renameFile')<cr>")
+vim.keymap.set("n", "gI", "<cmd>lua require('vscode-neovim').action('editor.action.goToImplementation')<cr>")
+vim.keymap.set("n", "gr", "<cmd>lua require('vscode-neovim').action('editor.action.goToReferences')<cr>")
+vim.keymap.set("n", "gd", "<cmd>lua require('vscode-neovim').action('editor.action.peekDefinition')<cr>")
+vim.keymap.set("n", "gt", "<cmd>lua require('vscode-neovim').action('editor.action.goToTypeDefinition')<cr>")
 
 -- Don't yank empty lines into the main register
 vim.keymap.set("n", "dd", function()
@@ -487,9 +488,9 @@ vim.keymap.set("v", "<", "<gv")
 vim.keymap.set("v", ">", ">gv")
 
 -- Languages
-vim.keymap.set("n", "<leader>ou", "<cmd>lua require('vscode-neovim').call('typescript.removeUnusedImports')<CR>")
+vim.keymap.set("n", "<leader>ou", "<cmd>lua require('vscode-neovim').action('typescript.removeUnusedImports')<CR>")
 vim.keymap.set("n", "<leader>oa", function()
-	require("vscode-neovim").call(
+	require("vscode-neovim").action(
 		"editor.action.sourceAction",
 		{ args = { kind = "source.addMissingImports", apply = "first" } }
 	)
