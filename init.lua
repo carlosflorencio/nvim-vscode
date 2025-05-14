@@ -16,6 +16,38 @@ vim.g.mapleader = " "
 require("lazy").setup({
 	{ "tpope/vim-repeat", event = "VeryLazy" },
 	{
+		-- debug print variables
+		'andrewferrier/debugprint.nvim',
+		event = 'VeryLazy',
+		version = '*',
+		opts = {
+			move_to_debugline = true,
+			print_tag = 'here',
+			keymaps = {
+				normal = {
+					plain_below = '<leader>dl',
+					plain_above = 'g?P',
+					variable_below = '<leader>dd',
+					variable_above = 'g?V',
+					variable_below_alwaysprompt = nil,
+					variable_above_alwaysprompt = nil,
+					textobj_below = 'g?o',
+					textobj_above = 'g?O',
+					toggle_comment_debug_prints = nil,
+					delete_debug_prints = nil,
+				},
+				visual = {
+					variable_below = '<leader>dd',
+					variable_above = 'g?V',
+				},
+			},
+			commands = {
+				toggle_comment_debug_prints = 'ToggleCommentDebugPrints',
+				delete_debug_prints = 'DeleteDebugPrints',
+			},
+		},
+	},
+	{
 		"stevearc/oil.nvim",
 		---@module 'oil'
 		---@type oil.SetupOpts
@@ -74,7 +106,7 @@ require("lazy").setup({
 			{ "R",     mode = { "o", "x" },      function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
 			{ "<c-s>", mode = { "c" },           function() require("flash").toggle() end,            desc = "Toggle Flash Search" },
 		}
-,
+		,
 	},
 	{
 		-- required for cmd + l
@@ -234,8 +266,8 @@ require("lazy").setup({
 
 -- Options
 vim.o.clipboard = "unnamedplus" -- system clipboard
-vim.o.ignorecase = true -- Ignore case in searches / ?
-vim.o.relativenumber = true -- Relative line numbers
+vim.o.ignorecase = true         -- Ignore case in searches / ?
+vim.o.relativenumber = true     -- Relative line numbers
 -- vim.o.undofile = true -- Save undo history
 
 ----------------- Keymaps
@@ -368,8 +400,8 @@ vim.keymap.set({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>")
 -- Editing
 vim.keymap.set("v", "y", "mcy`c") -- yank without moving cursor, using marks
 vim.keymap.set("v", "<C-p>", "y'>p")
-vim.keymap.set("x", "p", "P") -- paste and select pasted text
-vim.keymap.set("n", "gp", "p`]") -- paste line below and move cursor to the end of the pasted text
+vim.keymap.set("x", "p", "P")     -- paste and select pasted text
+vim.keymap.set("n", "gp", "p`]")  -- paste line below and move cursor to the end of the pasted text
 vim.keymap.set("v", "<CR>", "<cmd>lua require('vscode-neovim').call('editor.action.smartSelect.expand')<CR>")
 vim.keymap.set("n", "<BS>", "ciw")
 vim.keymap.set("v", "<leader>i", "<esc>`<i", { desc = "Insert at beginning selection" })
@@ -462,9 +494,6 @@ vim.keymap.set("n", "<leader>oa", function()
 		{ args = { kind = "source.addMissingImports", apply = "first" } }
 	)
 end)
-
-vim.keymap.set("n", "<leader>dd", "<cmd>lua require('vscode-neovim').call('turboConsoleLog.displayLogMessage')<CR>")
-vim.keymap.set("n", "<leader>dD", "<cmd>lua require('vscode-neovim').call('turboConsoleLog.deleteAllLogMessages')<CR>")
 
 -- Autocommands
 vim.cmd([[au TextYankPost * silent! lua vim.highlight.on_yank()]])
