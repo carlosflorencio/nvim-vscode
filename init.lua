@@ -17,33 +17,33 @@ require("lazy").setup({
 	{ "tpope/vim-repeat", event = "VeryLazy" },
 	{
 		-- debug print variables
-		'andrewferrier/debugprint.nvim',
-		event = 'VeryLazy',
-		version = '*',
+		"andrewferrier/debugprint.nvim",
+		event = "VeryLazy",
+		version = "*",
 		opts = {
 			move_to_debugline = true,
-			print_tag = 'here',
+			print_tag = "here",
 			keymaps = {
 				normal = {
-					plain_below = '<leader>dl',
-					plain_above = 'g?P',
-					variable_below = '<leader>dd',
-					variable_above = 'g?V',
+					plain_below = "<leader>dl",
+					plain_above = "g?P",
+					variable_below = "<leader>dd",
+					variable_above = "g?V",
 					variable_below_alwaysprompt = nil,
 					variable_above_alwaysprompt = nil,
-					textobj_below = 'g?o',
-					textobj_above = 'g?O',
+					textobj_below = "g?o",
+					textobj_above = "g?O",
 					toggle_comment_debug_prints = nil,
 					delete_debug_prints = nil,
 				},
 				visual = {
-					variable_below = '<leader>dd',
-					variable_above = 'g?V',
+					variable_below = "<leader>dd",
+					variable_above = "g?V",
 				},
 			},
 			commands = {
-				toggle_comment_debug_prints = 'ToggleCommentDebugPrints',
-				delete_debug_prints = 'DeleteDebugPrints',
+				toggle_comment_debug_prints = "ToggleCommentDebugPrints",
+				delete_debug_prints = "DeleteDebugPrints",
 			},
 		},
 	},
@@ -106,7 +106,7 @@ require("lazy").setup({
 			{ "R",     mode = { "o", "x" },      function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
 			{ "<c-s>", mode = { "c" },           function() require("flash").toggle() end,            desc = "Toggle Flash Search" },
 		}
-		,
+,
 	},
 	{
 		-- required for cmd + l
@@ -266,8 +266,8 @@ require("lazy").setup({
 
 -- Options
 vim.o.clipboard = "unnamedplus" -- system clipboard
-vim.o.ignorecase = true         -- Ignore case in searches / ?
-vim.o.relativenumber = true     -- Relative line numbers
+vim.o.ignorecase = true -- Ignore case in searches / ?
+vim.o.relativenumber = true -- Relative line numbers
 -- vim.o.undofile = true -- Save undo history
 
 ----------------- Keymaps
@@ -278,7 +278,11 @@ vim.keymap.set({ "n", "v" }, "<c-l>", "<cmd>lua require('vscode-neovim').action(
 vim.keymap.set({ "n", "v" }, "<c-j>", "<cmd>lua require('vscode-neovim').action('workbench.action.navigateDown')<cr>")
 vim.keymap.set({ "n", "v" }, "<c-k>", "<cmd>lua require('vscode-neovim').action('workbench.action.navigateUp')<cr>")
 vim.keymap.set("n", "<leader>cw", "<cmd>lua require('vscode-neovim').action('workbench.action.closeActiveEditor')<CR>")
-vim.keymap.set("n", "<leader>cs", "<cmd>lua require('vscode-neovim').action('workbench.action.closeEditorsAndGroup')<CR>")
+vim.keymap.set(
+	"n",
+	"<leader>cs",
+	"<cmd>lua require('vscode-neovim').action('workbench.action.closeEditorsAndGroup')<CR>"
+)
 vim.keymap.set("n", "<leader>cW", "<cmd>lua require('vscode-neovim').action('workbench.action.closeWindow')<CR>")
 vim.keymap.set("n", "<leader>k", "<cmd>lua require('vscode-neovim').action('workbench.action.keepEditor')<CR>")
 vim.keymap.set("n", "<leader>b", "<cmd>lua require('vscode-neovim').action('workbench.action.toggleAuxiliaryBar')<CR>")
@@ -318,7 +322,7 @@ vim.keymap.set(
 )
 vim.keymap.set("n", "<leader>aa", "<cmd>lua require('vscode-neovim').action('workbench.action.openQuickChat')<CR>")
 vim.keymap.set("n", "<leader>aA", "<cmd>lua require('vscode-neovim').action('workbench.panel.chat')<CR>")
-vim.keymap.set("n", "<leader>ac", "<cmd>lua require('vscode-neovim').action('github.copilot.chat.generateDocs')<CR>")
+vim.keymap.set("v", "<leader>ac", "<cmd>lua require('vscode-neovim').action('github.copilot.chat.generateDocs')<CR>")
 vim.keymap.set(
 	"n",
 	"<leader>at",
@@ -367,7 +371,11 @@ vim.keymap.set("n", "<leader>gc", "<cmd>lua require('vscode-neovim').action('wor
 vim.keymap.set("n", "<leader>tw", "<cmd>lua require('vscode-neovim').action('editor.action.toggleWordWrap')<CR>")
 vim.keymap.set("n", "<leader>TT", "<cmd>lua require('vscode-neovim').action('workbench.action.toggleZenMode')<CR>")
 vim.keymap.set("n", "<leader>z", "<cmd>lua require('vscode-neovim').action('workbench.action.toggleZenMode')<CR>")
-vim.keymap.set("n", "<leader>tc", "<cmd>lua require('vscode-neovim').action('workbench.action.toggleCenteredLayout')<CR>")
+vim.keymap.set(
+	"n",
+	"<leader>tc",
+	"<cmd>lua require('vscode-neovim').action('workbench.action.toggleCenteredLayout')<CR>"
+)
 vim.keymap.set("n", "<leader>tt", "<cmd>lua require('vscode-neovim').action('workbench.actions.view.problems')<CR>")
 
 -- Runs, Tasks
@@ -401,12 +409,16 @@ vim.keymap.set({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>")
 -- Editing
 vim.keymap.set("v", "y", "mcy`c") -- yank without moving cursor, using marks
 vim.keymap.set("v", "<C-p>", "y'>p")
-vim.keymap.set("x", "p", "P")     -- paste and select pasted text
-vim.keymap.set("n", "gp", "p`]")  -- paste line below and move cursor to the end of the pasted text
+vim.keymap.set("x", "p", "P") -- paste and select pasted text
+vim.keymap.set("n", "gp", "p`]") -- paste line below and move cursor to the end of the pasted text
 vim.keymap.set("v", "<CR>", "<cmd>lua require('vscode-neovim').action('editor.action.smartSelect.expand')<CR>")
 vim.keymap.set("n", "<BS>", "ciw")
 vim.keymap.set("v", "<leader>i", "<esc>`<i", { desc = "Insert at beginning selection" })
-vim.keymap.set({ "n", "v" }, "<leader>fm", "<cmd>lua require('vscode-neovim').action('editor.action.formatDocument')<CR>")
+vim.keymap.set(
+	{ "n", "v" },
+	"<leader>fm",
+	"<cmd>lua require('vscode-neovim').action('editor.action.formatDocument')<CR>"
+)
 
 -- Surrounds keymaps
 vim.keymap.set("n", '<leader>S"', 'ysiW"', { desc = "Surround word with double quotes", remap = true })
